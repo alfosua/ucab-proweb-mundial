@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIFA World Cup 2026 - Balón Oficial</title>
+  <meta name="author" content="Nintendon't Studios" />
+  <meta name="description" content="Información relacionada al balón oficial del mundial 2026: fotos y descripción." />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,600;0,800;1,400;1,800&display=swap" rel="stylesheet" />
+  
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/47c95596a2.js" crossorigin="anonymous"></script>
+
+  <style>
+    /* Reset & Base Variables */
+    :root {
+      --bg-color: #1a1a2e;
+      --tab-active-bg: #8000ff; /* Purple like the FIFA menu play button */
+      --card-bg: rgba(20, 20, 40, 0.7);
+      --card-border: rgba(255, 255, 255, 0.15);
+      --card-hover-border: rgba(255, 255, 255, 0.8);
+      --text-main: #ffffff;
+      --text-muted: #a0a0b0;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kanit', sans-serif;
+      background: linear-gradient(135deg, #10101a 0%, #2a1b42 50%, #15152a 100%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      text-transform: uppercase;
+    }
+
+    /* Top Navigation Area (Like FIFA 21 Header) */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 40px;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .main-nav {
+      padding: 0 40px;
+      display: flex;
+      gap: 5px;
+      margin-top: 15px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav-tab {
+      padding: 10px 30px;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.2s;
+      clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); /* Slight slant */
+    }
+
+    .nav-tab.active {
+      background: linear-gradient(90deg, #7b2cbf 0%, #4cc9f0 100%);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* FIFA 21 Style Grid Menu */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 350px 160px; /* Top row tall, bottom row short */
+      gap: 15px;
+      padding: 20px 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Card Base Styles */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--card-hover-border);
+      transform: scale(1.02);
+      z-index: 10;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 15px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .card-content {
+      padding: 0 15px 15px 15px;
+      font-size: 0.85rem;
+      color: #ccc;
+      line-height: 1.4;
+      text-transform: none; /* Keep description readable */
+      z-index: 2;
+      position: relative;
+      flex: 1;
+    }
+
+    /* Top Row Layouts */
+    .card-hero {
+      grid-column: span 2; /* Takes 2 columns */
+      background-image: url('Trionda_290126.jpg');
+      background-size: cover;
+      background-position: center 20%;
+    }
+    .card-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(90deg, rgba(10,15,30,0.9) 0%, rgba(10,15,30,0.4) 50%, transparent 100%);
+      z-index: 1;
+    }
+    .card-hero .card-title {
+      font-size: 3rem;
+      font-style: italic;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+      margin-top: 20px;
+    }
+    .card-hero .badge {
+      display: inline-block;
+      background: #39ff14;
+      color: #000;
+      padding: 4px 10px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      margin-left: 15px;
+      z-index: 2;
+      position: relative;
+      clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+    }
+
+    /* Standard info cards */
+    .card-info {
+      background: linear-gradient(180deg, var(--card-bg) 0%, rgba(40,10,60,0.8) 100%);
+    }
+    
+    .card-tech {
+      background: linear-gradient(180deg, var(--card-bg) 0%, rgba(10,50,80,0.8) 100%);
+    }
+
+    /* Bottom Row Layouts - Galería */
+    .card-gallery-title {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      background: rgba(0,0,0,0.7);
+      padding: 2px 8px;
+      z-index: 3;
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0; left: 0;
+      transition: transform 0.5s;
+    }
+
+    .card:hover .gallery-img {
+      transform: scale(1.1);
+    }
+
+    /* Specific Gallery Image Adjustments (Using the same image to simulate different angles) */
+    .img-1 { object-position: center; }
+    .img-2 { object-position: top center; } /* Zoom to top logo */
+    .img-3 { object-position: bottom right; } /* Zoom to texture */
+    .img-4 { object-position: left center; } /* Zoom to side */
+
+    /* Decorative icon for cards */
+    .card-icon {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      font-size: 8rem;
+      color: rgba(255,255,255,0.03);
+      z-index: 1;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto auto auto;
+      }
+      .card-hero {
+        grid-column: span 2;
+        min-height: 250px;
+      }
+      .main-nav {
+        overflow-x: auto;
+        padding: 0 20px;
+      }
+    }
+    @media (max-width: 600px) {
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+      .card-hero {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Status Bar -->
+  <div class="top-bar">
+    <div>USA / Canadá / Mexico</div>
+  </div>
+
+  <!-- Main Navigation Tabs -->
+  <nav class="main-nav">
+    <a href="#" class="nav-tab">INICIO</a>
+    <a href="#" class="nav-tab">PARTIDOS</a>
+    <a href="#" class="nav-tab">EQUIPOS</a>
+    <a href="#" class="nav-tab active">BALÓN OFICIAL</a>
+  </nav>
+
+  <!-- Content Grid -->
+  <main class="menu-grid">
+    
+    <!-- TOP ROW -->
+    
+    <!-- Card 1: Hero (Span 2 cols) -->
+    <div class="card card-hero">
+      <div class="badge">OFFICIAL MATCH BALL</div>
+      <h2 class="card-title">TRIONDA</h2>
+      
+      <div class="card-content">
+        <strong>EL LATIDO DEL MUNDIAL 2026™</strong><br><br>
+        Conoce el balón oficial que rodará en Canadá, México y Estados Unidos. Diseñado para la precisión absoluta y la velocidad del fútbol moderno.
+      </div>
+    </div>
+
+    <!-- Card 2: Descripción e Inspiración -->
+    <div class="card card-info">
+      <h2 class="card-title">INSPIRACIÓN</h2>
+      <div class="card-content">
+        Un diseño fluido con ondas tricolor que rinde tributo a las naciones anfitrionas. El patrón entrelazado simboliza la conexión cultural y la pasión compartida por el fútbol en Norteamérica.
+      </div>
+      <i class="fa-solid fa-earth-americas card-icon"></i>
+    </div>
+
+    <!-- Card 3: Tecnología -->
+    <div class="card card-tech">
+      <h2 class="card-title">TECNOLOGÍA</h2>
+      <div class="card-content">
+        <ul style="margin-left: 15px; margin-top: 5px;">
+          <li>Unión térmica sin costuras.</li>
+          <li>Textura aerodinámica.</li>
+          <li>Sensor IMU de 500 Hz integrado para el sistema VAR.</li>
+        </ul>
+      </div>
+      <i class="fa-solid fa-microchip card-icon"></i>
+    </div>
+
+    <!-- BOTTOM ROW (GALERÍA - 4 SLOTS) -->
+
+    <!-- Card 4: Galería 1 -->
+    <div class="card">
+      <img src="assets/Trionda_290126.jpg" class="gallery-img img-1" alt="Balón Trionda - Vista Completa" />
+      <div class="card-gallery-title">GALERÍA 1</div>
+    </div>
+
+    <!-- Card 5: Galería 2 -->
+    <div class="card">
+      <img src="assets/Trionda_copa.jpg" class="gallery-img img-2" alt="Balón Trionda - Detalle Logo" />
+      <div class="card-gallery-title">GALERÍA 2</div>
+    </div>
+
+    <!-- Card 6: Galería 3 -->
+    <div class="card">
+      <img src="assets/Trionda_cerca.jpeg" class="gallery-img img-3" alt="Balón Trionda - Detalle Textura" />
+      <div class="card-gallery-title">GALERÍA 3</div>
+    </div>
+
+    <!-- Card 7: Galería 4 -->
+    <div class="card">
+      <img src="assets/Trionda_logo_fifa.webp" class="gallery-img img-4" alt="Balón Trionda - Ángulo Lateral" />
+      <div class="card-gallery-title">GALERÍA 4</div>
+    </div>
+
+  </main>
+
+</body>
+</html>
