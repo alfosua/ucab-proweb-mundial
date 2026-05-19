@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIFA World Cup 2026 - Banda Sonora Oficial</title>
+  <meta name="author" content="Nintendon't Studios" />
+  <meta name="description" content="Página oficial de la Banda Sonora del Mundial 2026. Descubre el himno oficial y el álbum." />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,600;0,800;1,400;1,800&display=swap" rel="stylesheet" />
+  
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/47c95596a2.js" crossorigin="anonymous"></script>
+
+  <style>
+    /* Reset & Variables */
+    :root {
+      --bg-color: #0b0c10;
+      --card-bg: rgba(20, 20, 40, 0.6);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --card-hover-border: rgba(0, 240, 255, 0.8);
+      --text-main: #ffffff;
+      --text-muted: #a0a0b0;
+      
+      --fifa-teal: #00f0ff;
+      --fifa-pink: #ff0055;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kanit', sans-serif;
+      /* Background gradient representing music/festival vibes */
+      background: linear-gradient(135deg, #110e24 0%, #301740 50%, #171126 100%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      text-transform: uppercase;
+    }
+
+    /* Main Navigation Tabs */
+    .main-nav {
+      padding: 0 40px;
+      display: flex;
+      gap: 5px;
+      margin-top: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav-tab {
+      padding: 10px 30px;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.2s;
+      clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); 
+    }
+
+    .nav-tab.active {
+      background: linear-gradient(90deg, #9d4edd 0%, #4cc9f0 100%);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* Grid Layout */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 400px 180px; 
+      gap: 15px;
+      padding: 30px 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Cards Base */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      border-color: var(--card-hover-border);
+      transform: scale(1.02);
+      box-shadow: 0 10px 25px rgba(0, 240, 255, 0.2);
+      z-index: 10;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      font-style: italic;
+      padding: 15px;
+      z-index: 2;
+      position: relative;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+    }
+
+    .card-content {
+      padding: 0 15px 15px 15px;
+      font-size: 0.95rem;
+      color: #e0e0e0;
+      line-height: 1.5;
+      text-transform: none; 
+      z-index: 2;
+      position: relative;
+      flex: 1;
+    }
+
+    /* Images acting as backgrounds for cards */
+    .card-img-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.5s;
+      z-index: 0;
+    }
+    
+    .card:hover .card-img-bg {
+      transform: scale(1.05);
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      /* Darker at bottom for text readability */
+      background: linear-gradient(0deg, rgba(10,10,20,0.95) 0%, rgba(10,10,20,0.4) 60%, transparent 100%);
+      z-index: 1;
+    }
+    
+    .overlay-solid {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(30,20,50,0.6);
+      z-index: 1;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      color: #000;
+      padding: 4px 10px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      margin-left: 15px;
+      margin-top: 15px;
+      z-index: 2;
+      position: relative;
+      clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+    }
+    
+    .badge-primary { background: var(--fifa-teal); }
+    .badge-secondary { background: var(--fifa-pink); color: #fff; }
+
+    /* Specific Cards */
+    .card-banner {
+      grid-column: span 2;
+    }
+    .card-banner .card-title {
+      font-size: 2.8rem;
+      color: #fff;
+    }
+
+    /* Call to Action Button */
+    .play-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #1DB954; /* Spotify inspired */
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-weight: 800;
+      font-style: italic;
+      font-size: 1rem;
+      margin-left: 15px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      width: fit-content;
+      z-index: 2;
+      transition: background 0.3s, transform 0.2s;
+      text-shadow: none;
+      clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+    }
+    .play-btn:hover {
+      background: #1ed760;
+      transform: scale(1.05);
+    }
+    
+    .music-platforms {
+      display: flex;
+      gap: 15px;
+      margin-left: 15px;
+      margin-bottom: 15px;
+      z-index: 2;
+    }
+    
+    .platform-icon {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    .platform-icon:hover {
+      color: #fff;
+    }
+
+    /* Short Cards styling */
+    .short-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(40,20,60,0.8) 0%, rgba(15,15,30,0.9) 100%);
+    }
+    
+    .short-card .card-title {
+      font-size: 1.1rem;
+      padding: 10px;
+      text-shadow: none;
+    }
+    
+    .short-card i {
+      font-size: 2.2rem;
+      margin-bottom: 5px;
+      color: rgba(255,255,255,0.4);
+      transition: color 0.3s, transform 0.3s;
+    }
+    
+    .short-card:hover i {
+      color: var(--fifa-teal);
+      transform: translateY(-5px);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
+      .card-banner {
+        grid-column: span 2;
+        min-height: 350px;
+      }
+    }
+    @media (max-width: 600px) {
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+      .card-banner {
+        grid-column: span 1;
+      }
+      .main-nav {
+        overflow-x: auto;
+        padding: 0 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Navigation Tabs -->
+  <nav class="main-nav">
+    <a href="#" class="nav-tab">INICIO</a>
+    <a href="#" class="nav-tab">PARTIDOS</a>
+    <a href="#" class="nav-tab">EQUIPOS</a>
+    <a href="#" class="nav-tab active">FIFA SOUND</a>
+  </nav>
+
+  <!-- Content Grid -->
+  <main class="menu-grid">
+    
+    <!-- TALL CARDS (Row 1) -->
+    
+    <!-- Banner Principal -->
+    <div class="card card-banner">
+      <!-- Usando imágenes representativas de conciertos/música -->
+      <div class="card-img-bg" style="background-image: url('https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&q=80&w=800');"></div>
+      <div class="overlay"></div>
+      <div class="badge badge-primary">OFFICIAL ALBUM</div>
+      <div style="flex: 1;"></div>
+      <h2 class="card-title">LA BANDA SONORA DEL MUNDIAL 2026</h2>
+      <div class="card-content">
+        <strong>EL RITMO QUE UNE AL MUNDO</strong><br><br>
+        Descubre el álbum oficial de la Copa Mundial de la FIFA 2026™. Una fusión de géneros, culturas y artistas de Canadá, México y Estados Unidos que pondrá a vibrar a todo el planeta.
+      </div>
+    </div>
+
+    <!-- Escuchar Álbum (Call to Action) -->
+    <div class="card">
+      <div class="card-img-bg" style="background-image: url('https://images.unsplash.com/photo-1619983081563-430f53602796?auto=format&fit=crop&q=80&w=600');"></div>
+      <div class="overlay-solid"></div>
+      <div class="badge badge-secondary">YA DISPONIBLE</div>
+      <div style="flex: 1;"></div>
+      <h2 class="card-title" style="color: var(--fifa-teal);">ESCUCHA AHORA</h2>
+      <div class="card-content">
+        Disfruta del himno oficial y la lista completa de canciones en tu plataforma de streaming favorita. ¡Que comience la fiesta!
+      </div>
+      <div class="music-platforms">
+        <a href="#" class="platform-icon" title="Spotify"><i class="fa-brands fa-spotify"></i></a>
+        <a href="#" class="platform-icon" title="Apple Music"><i class="fa-brands fa-apple"></i></a>
+        <a href="#" class="platform-icon" title="YouTube Music"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" class="platform-icon" title="Amazon Music"><i class="fa-brands fa-amazon"></i></a>
+      </div>
+      <a href="#" class="play-btn">
+        <i class="fa-solid fa-play"></i> REPRODUCIR ÁLBUM
+      </a>
+    </div>
+
+    <!-- Artistas Destacados -->
+    <div class="card">
+      <div class="card-img-bg" style="background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=600');"></div>
+      <div class="overlay"></div>
+      <div class="badge badge-primary">ARTISTAS</div>
+      <div style="flex: 1;"></div>
+      <h2 class="card-title">COLABORACIONES ÉPICAS</h2>
+      <div class="card-content">
+        Los talentos musicales más grandes del momento se reúnen en FIFA Sound. Colaboraciones exclusivas, ritmos urbanos, pop y la mejor energía multicultural de Norteamérica.
+      </div>
+    </div>
+
+    <!-- SHORT CARDS (Row 2) -->
+    
+    <div class="card short-card" style="border-bottom: 4px solid var(--fifa-teal);">
+      <i class="fa-solid fa-music"></i>
+      <div class="card-title">HIMNO OFICIAL</div>
+    </div>
+
+    <div class="card short-card" style="border-bottom: 4px solid var(--fifa-pink);">
+      <i class="fa-solid fa-microphone-lines"></i>
+      <div class="card-title">ENTREVISTAS</div>
+    </div>
+
+    <div class="card short-card" style="border-bottom: 4px solid #4cc9f0;">
+      <i class="fa-solid fa-compact-disc"></i>
+      <div class="card-title">DISCOGRAFÍA</div>
+    </div>
+
+    <div class="card short-card" style="border-bottom: 4px solid #9d4edd;">
+      <i class="fa-brands fa-tiktok"></i>
+      <div class="card-title">CHALLENGES</div>
+    </div>
+
+  </main>
+
+</body>
+</html>
