@@ -214,19 +214,21 @@
       z-index: 1;
     }
 
-    /* Responsive adjustments */
+        /* Responsive adjustments */
     @media (max-width: 1024px) {
       .menu-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: auto auto auto auto;
+        grid-template-rows: auto;
+        grid-auto-rows: minmax(200px, auto);
       }
       .card-hero {
         grid-column: span 2;
-        min-height: 250px;
+        min-height: 300px;
       }
       .main-nav {
         overflow-x: auto;
         padding: 0 20px;
+        white-space: nowrap;
       }
     }
     @media (max-width: 600px) {
@@ -235,6 +237,17 @@
       }
       .card-hero {
         grid-column: span 1;
+      }
+      .top-bar {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding: 10px;
+        text-align: center;
+      }
+      .nav-tab {
+        padding: 10px 15px;
+        font-size: 1rem;
       }
     }
   </style>
