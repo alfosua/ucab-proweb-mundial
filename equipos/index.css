@@ -209,3 +209,61 @@ body {
     font-weight: 700;
     letter-spacing: -0.5px;
 }
+
+@media (max-width: 768px) {
+    .top-bar {
+        padding: 10px 20px;
+    }
+
+    .main-nav {
+        padding: 0 20px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .main-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-tab {
+        flex-shrink: 0;
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .menu-grid {
+        padding: 20px 20px;
+        gap: 20px;
+    }
+
+    .filter-bar {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 15px;
+        scrollbar-width: none;
+    }
+
+    .filter-bar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter-bar i {
+        position: sticky;
+        left: 0;
+        background: #151026;
+        padding-right: 10px;
+        z-index: 2;
+    }
+
+    .filter-bar button {
+        flex-shrink: 0;
+    }
+
+    .countries-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+}
