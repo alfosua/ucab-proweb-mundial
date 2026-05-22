@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIFA World Cup 2026 - Partidos</title>
+  <meta name="author" content="Nintendon't Studios" />
+  <meta name="description" content="Listado de partidos con filtros por ciudad, ronda, estatus, grupo y equipo." />
+  <link rel="icon" href="assets/2026_FIFA_World_Cup_emblem.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,600;0,800;1,400;1,800&amp;display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/47c95596a2.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reseter.css/1.0.8/reseter.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root{--card-bg:rgba(20,20,40,.72);--card-border:rgba(255,255,255,.14);--text-muted:#a0a0b0;--lime:#b8ff52;--cyan:#4cc9f0;--red:#ff4d6d;--gold:#ffca3a}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Kanit',sans-serif;background:radial-gradient(circle at top right,rgba(76,201,240,.16),transparent 28%),radial-gradient(circle at left center,rgba(123,44,191,.22),transparent 32%),linear-gradient(135deg,#10101a 0%,#2a1b42 50%,#15152a 100%);background-attachment:fixed;color:#fff;min-height:100vh;overflow-x:hidden;text-transform:uppercase}
+    .top-bar{display:flex;justify-content:space-between;gap:12px;padding:12px 40px 10px;font-size:.78rem;letter-spacing:1px;color:var(--text-muted);border-bottom:1px solid rgba(255,255,255,.05)}
+    .main-nav{padding:0 40px;display:flex;gap:6px;margin-top:14px;border-bottom:1px solid rgba(255,255,255,.1);flex-wrap:wrap}
+    .nav-tab{padding:10px 28px;font-size:1.02rem;color:var(--text-muted);text-decoration:none;clip-path:polygon(10% 0,100% 0,90% 100%,0 100%)}
+    .nav-tab.active,.nav-tab:hover{background:linear-gradient(90deg,#7b2cbf 0%,#4cc9f0 100%);color:#fff;font-weight:600}
+    .page-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1480px;margin:0 auto;padding:22px 40px 40px}
+    .card{position:relative;overflow:hidden;border:1px solid var(--card-border);background:var(--card-bg);box-shadow:0 12px 28px rgba(0,0,0,.3)}
+    .card-title{padding:16px 18px 0;font-size:1.12rem;font-weight:800;letter-spacing:.05em}
+    .card-body{padding:16px 18px 18px;color:#d9d9e6;font-size:.88rem;line-height:1.5;text-transform:none}
+    .hero{grid-column:span 2;min-height:220px;background:linear-gradient(90deg,rgba(8,10,20,.96),rgba(8,10,20,.72),rgba(76,201,240,.12))}
+    .hero-badge{display:inline-block;margin:18px 18px 0;max-width:calc(100% - 36px);padding:5px 14px 5px 18px;background:var(--lime);color:#09111c;font-size:.76rem;font-weight:800;clip-path:polygon(0 0,100% 0,96% 100%,0 100%)}
+    .hero-title{margin:12px 18px 10px;font-size:2.35rem;font-style:italic;font-weight:800;line-height:.92}
+    .hero-copy{padding:0 18px 16px;max-width:860px;color:#cfd2e2;text-transform:none;line-height:1.45}
+    .filter-panel{grid-column:span 2}
+    .filter-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .filter-field{display:grid;gap:6px}
+    .filter-field label{font-size:.72rem;letter-spacing:.14em;color:var(--text-muted);text-transform:uppercase}
+    .filter-field select{width:100%;appearance:none;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:#fff;padding:11px 34px 11px 12px;font-family:inherit;text-transform:uppercase;overflow:hidden;text-overflow:ellipsis}
+    .filter-field select option{background:#15152a;color:#fff}
+    .full{grid-column:1/-1}.summary-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.summary-item{padding:14px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04)}.summary-item strong{display:block;color:var(--lime);font-size:1.55rem}.summary-item span{color:var(--text-muted);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase}
+    .match-list{display:grid;gap:12px}
+    .match-card{display:grid;grid-template-columns:.95fr 1.6fr .8fr 1fr;gap:18px;align-items:center;padding:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04)}
+    .match-card.featured{border-color:rgba(255,77,109,.45);background:linear-gradient(90deg,rgba(255,77,109,.08),rgba(255,255,255,.035))}
+    .match-meta{color:var(--text-muted);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}.fixture{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px}.fixture-team{display:flex;align-items:center;gap:10px;font-size:1.05rem;font-weight:700}.fixture-team.right{justify-content:flex-end}.versus{color:var(--cyan);font-size:.78rem;font-weight:800;letter-spacing:.16em}.score-box{text-align:center}.score{display:block;color:var(--lime);font-size:1.4rem;font-weight:800;line-height:1}.score-label{color:var(--text-muted);font-size:.72rem;letter-spacing:.12em}.crest{width:30px;height:22px;border-radius:4px;display:block;flex:0 0 30px;border:1px solid rgba(255,255,255,.72);box-shadow:0 5px 10px rgba(0,0,0,.25)}.mex{background:linear-gradient(90deg,#006847 0 33%,#fff 33% 66%,#ce1126 66%)}.usa{background:linear-gradient(180deg,#b22234 0 14%,#fff 14% 28%,#b22234 28% 42%,#fff 42% 56%,#b22234 56% 70%,#fff 70% 84%,#b22234 84%);position:relative}.usa::before{content:"";position:absolute;left:0;top:0;width:45%;height:54%;background:#3c3b6e}.can{background:linear-gradient(90deg,#d80621 0 25%,#fff 25% 75%,#d80621 75%)}.mar{background:#c1272d;position:relative}.mar::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;border:1px solid #0b8f55;transform:translate(-50%,-50%) rotate(45deg)}
+    .match-actions{display:grid;gap:10px;justify-items:end}.pill{display:inline-flex;align-items:center;gap:8px;width:max-content;max-width:100%;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);padding:7px 10px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;white-space:normal}.live{color:var(--red)}.done{color:var(--lime)}.pending{color:var(--gold)}
+    .cta{color:#09111c;background:var(--lime);padding:9px 14px;text-decoration:none;font-weight:800;clip-path:polygon(6% 0,100% 0,94% 100%,0 100%);white-space:nowrap}
+    @media(max-width:1180px){.page-grid{grid-template-columns:repeat(2,1fr)}.hero,.filter-panel{grid-column:span 2}.filter-grid{grid-template-columns:repeat(2,1fr)}.match-card{grid-template-columns:1fr 1.4fr}.match-actions{justify-items:start}.summary-strip{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:760px){.top-bar{padding:10px 16px;display:grid;font-size:.68rem}.main-nav{padding:0 16px;overflow-x:auto;flex-wrap:nowrap}.nav-tab{padding:9px 22px;font-size:.9rem;white-space:nowrap}.page-grid{grid-template-columns:1fr;padding:16px;gap:14px}.hero,.filter-panel,.full{grid-column:1/-1}.card-title{padding:14px 14px 0}.card-body{padding:14px}.hero-title{font-size:2rem}.filter-grid,.match-card,.summary-strip{grid-template-columns:1fr}.fixture{grid-template-columns:1fr;justify-items:start}.fixture-team.right{justify-content:flex-start}.versus{padding-left:40px}.score-box{text-align:left}.cta{width:max-content}.match-card{align-items:start}.match-actions{justify-items:start}}
+  </style>
+</head>
+<body>
+  <div class="top-bar"><div>USA / CANADÁ / MÉXICO</div><div>WORLD CUP 2026 MATCH CENTER</div></div>
+  <nav class="main-nav">
+    <a href="#" class="nav-tab">INICIO</a><a href="partidos-filtros.html" class="nav-tab active">PARTIDOS</a><a href="clasificacion-brackets.html" class="nav-tab">CLASIFICACIÓN</a><a href="equipo-detalle.html" class="nav-tab">EQUIPOS</a><a href="ods-estrategia.html" class="nav-tab">ODS</a>
+  </nav>
+  <main class="page-grid">
+    <section class="card hero">
+      <div class="hero-badge">LISTADO DE PARTIDOS</div>
+      <h1 class="hero-title">FILTROS DEL TORNEO</h1>
+      <p class="hero-copy">Consulta estricta por ciudad, ronda, estatus, grupo y equipo. La vista conserva los mismos campos que alimentarán las tarjetas del calendario y el detalle del partido.</p>
+    </section>
+    <section class="card filter-panel">
+      <div class="card-title">FILTROS</div>
+      <div class="card-body">
+        <div class="filter-grid">
+          <div class="filter-field"><label>Ciudad</label><select><option>Ciudad de México</option><option>Dallas</option><option>Toronto</option><option>Los Ángeles</option></select></div>
+          <div class="filter-field"><label>Ronda</label><select><option>Todas</option><option>Grupo A</option><option>Dieciseisavos</option><option>Cuartos</option></select></div>
+          <div class="filter-field"><label>Estatus</label><select><option>Todos</option><option>Programado</option><option>En vivo</option><option>Finalizado</option></select></div>
+          <div class="filter-field"><label>Grupo</label><select><option>Todos</option><option>Grupo A</option><option>Grupo B</option><option>Grupo C</option></select></div>
+          <div class="filter-field"><label>Equipo</label><select><option>Todos</option><option>México</option><option>Estados Unidos</option><option>Canadá</option></select></div>
+        </div>
+      </div>
+    </section>
+    <section class="card full">
+      <div class="card-title">RESUMEN</div>
+      <div class="card-body summary-strip">
+        <div class="summary-item"><strong>1</strong><span>En vivo</span></div>
+        <div class="summary-item"><strong>2</strong><span>Ciudad de México</span></div>
+        <div class="summary-item"><strong>3</strong><span>Rondas activas</span></div>
+        <div class="summary-item"><strong>5</strong><span>Filtros estrictos</span></div>
+      </div>
+    </section>
+    <section class="card full">
+      <div class="card-title">PARTIDOS</div>
+      <div class="card-body">
+        <div class="match-list">
+          <article class="match-card featured">
+            <div><div class="match-meta">14 JUN 2026 · 17:00</div><div class="mt-1 font-bold uppercase">BMO Field</div><div class="match-meta">Toronto</div></div>
+            <div class="fixture"><div class="fixture-team"><span class="crest can"></span><span>Canadá</span></div><span class="versus">VS</span><div class="fixture-team right"><span>Marruecos</span><span class="crest mar"></span></div></div>
+            <div class="score-box"><span class="score">1 - 1</span><span class="score-label">72'</span></div>
+            <div class="match-actions"><span class="pill live"><i class="fa-solid fa-signal"></i> En vivo</span><span class="pill">Fase de grupos · Grupo B</span><a class="cta" href="#">Minuto a minuto</a></div>
+          </article>
+          <article class="match-card">
+            <div><div class="match-meta">21 JUL 2026 · 20:00</div><div class="mt-1 font-bold uppercase">Estadio Azteca</div><div class="match-meta">Ciudad de México</div></div>
+            <div class="fixture"><div class="fixture-team"><span class="crest mex"></span><span>México</span></div><span class="versus">VS</span><div class="fixture-team right"><span>Canadá</span><span class="crest can"></span></div></div>
+            <div class="score-box"><span class="score">20:00</span><span class="score-label">Por jugar</span></div>
+            <div class="match-actions"><span class="pill pending"><i class="fa-solid fa-clock"></i> Programado</span><span class="pill">Cuartos · Grupo A</span><a class="cta" href="partido-detalle-previo.html">Previa</a></div>
+          </article>
+          <article class="match-card">
+            <div><div class="match-meta">18 JUL 2026 · 20:00</div><div class="mt-1 font-bold uppercase">Estadio Azteca</div><div class="match-meta">Ciudad de México</div></div>
+            <div class="fixture"><div class="fixture-team"><span class="crest mex"></span><span>México</span></div><span class="versus">VS</span><div class="fixture-team right"><span>Estados Unidos</span><span class="crest usa"></span></div></div>
+            <div class="score-box"><span class="score">2 - 1</span><span class="score-label">Final</span></div>
+            <div class="match-actions"><span class="pill done"><i class="fa-solid fa-circle-check"></i> Finalizado</span><span class="pill">Dieciseisavos · Grupo A</span><a class="cta" href="partido-detalle.html">Detalle</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
