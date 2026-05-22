@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,8 +12,7 @@
     <link rel="icon" href="assets/2026_FIFA_World_Cup_emblem.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
@@ -26,22 +25,80 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="index.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
     <div class="top-bar">
-    <div>FIFA WORLD CUP 2026™</div>
+      <div>FIFA WORLD CUP 2026™</div>
     </div>
-
+    
     <nav class="main-nav">
-        <a href="#" class="nav-tab">INICIO</a>
-        <a href="#" class="nav-tab">PARTIDOS</a>
-        <a href="#" class="nav-tab active">EQUIPOS</a>
-        <a href="#" class="nav-tab">BALÓN OFICIAL</a>
+      <a href="#" class="nav-tab">INICIO</a>
+      <a href="#" class="nav-tab">PARTIDOS</a>
+      <a href="#" class="nav-tab active">SEDES</a>
+      <a href="#" class="nav-tab">EQUIPOS</a>
     </nav>
 
     <main class="menu-grid">
+      <div class="filter-bar">
+        <i class="fa-solid fa-filter"></i>
+        <button>TODOS</button>
+        <button>USA</button>
+        <button class="active">CAN</button>
+        <button>MEX</button>
+      </div>
+
+      <div class="city-detail-container">
+        <div class="city-banner">
+          <h1 class="city-title">TORONTO</h1>
+        </div>
+
+        <div class="detail-card">
+          <h3>LA CIUDAD</h3>
+          <p>La capital financiera y metrópolis multicultural de Canadá se estrena como sede mundialista con gran entusiasmo.</p>
+        </div>
+
+        <div class="detail-card">
+          <h3><i class="fa-solid fa-calendar-days icon-pink"></i> PARTIDOS PROGRAMADOS</h3>
+          <div class="matches-list">
+            <div class="match-item">
+              <span class="match-info">Grupos (Inauguración CAN)</span>
+              <span class="match-date">12 Jun</span>
+            </div>
+            <div class="match-item">
+              <span class="match-info">Fase de Grupos</span>
+              <span class="match-date">17 Jun</span>
+            </div>
+            <div class="match-item">
+              <span class="match-info">Fase de Grupos</span>
+              <span class="match-date">23 Jun</span>
+            </div>
+            <div class="match-item">
+              <span class="match-info">Dieciseisavos de Final</span>
+              <span class="match-date">2 Jul</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-card">
+          <h3><i class="fa-solid fa-map-location-dot icon-pink"></i> EL ESTADIO</h3>
+          <div class="stadium-content">
+            <div class="stadium-photo">
+              <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/54/37/4c/caption.jpg?w=1200&h=-1&s=1">
+            </div>
+            <div class="stadium-info">
+              <h4>BMO Field (Toronto Stadium)</h4>
+              <p>Ubicado en Exhibition Place, a orillas del lago Ontario, este estadio es el hogar del Toronto FC y ha sido renovado para albergar encuentros mundialistas con la más alta tecnología.</p>
+              <ul>
+                <li><strong>Capacidad:</strong> 45,000 espectadores</li>
+                <li><strong>Coordenadas:</strong> 43°37′58″N 79°25′07″O</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </main>
   </body>
 </html>
