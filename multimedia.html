@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Material oficial del Mundial 2026</title>
+    <link rel="icon" href="assets/2026_FIFA_World_Cup_emblem.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+      :root { color: #f4f7ff; background: #050b1b; font-family: 'Kanit', sans-serif; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; background: radial-gradient(circle at top left, #2d4f96 0%, transparent 36%), radial-gradient(circle at bottom right, #8457ff 0%, transparent 28%), linear-gradient(180deg, #060913 0%, #050b1b 100%); }
+      .page { max-width: 1120px; margin: 0 auto; padding: 18px; display: flex; flex-direction: column; gap: 18px; }
+      .header { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+      .header h1 { margin: 0; font-size: clamp(1.75rem, 2.8vw, 2.4rem); }
+      .header p { margin: 6px 0 0; color: rgba(255,255,255,0.72); font-size: 0.95rem; }
+      .back-link { color: #ffffff; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); padding: 10px 16px; border-radius: 4px; text-decoration: none; transition: transform .2s ease; }
+      .back-link:hover { transform: translateY(-2px); }
+      .summary { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 20px; }
+      .media-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+      .media-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 20px; min-height: 160px; display: flex; flex-direction: column; justify-content: space-between; }
+      .media-card h2 { margin: 0 0 10px; font-size: 1rem; }
+      .media-card p { margin: 0; color: rgba(255,255,255,0.72); line-height: 1.5; font-size: 0.92rem; }
+      .media-card span { color: #acd7ff; }
+      .footer-note { color: rgba(255,255,255,0.66); font-size: 0.88rem; }
+      .page-hero { display: flex; justify-content: center; margin-bottom: 18px; }
+      .page-hero img { width: 100%; max-width: 100%; height: 150px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.12); object-fit: cover; }
+      @media (max-width: 980px) { .media-grid { grid-template-columns: 1fr; } .page-hero { display: none; } }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="header">
+        <div>
+          <h1>Balón, mascotas y banda sonora</h1>
+          <p>Descubre el material oficial del torneo: balón, mascotas y el sonido que acompañará a los partidos.</p>
+        </div>
+        <a href="bienvenida.html" class="back-link">← Volver a bienvenida</a>
+      </div>
+      <div class="page-hero">
+        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20280%20180'%3E%3Crect%20width='280'%20height='180'%20rx='30'%20fill='%231a6f32'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Kanit,%20sans-serif'%20font-size='32'%20fill='%23fff'%3EMED%3C/text%3E%3C/svg%3E" alt="Imagen de material oficial" />
+      </div>
+      <div class="summary">
+        <p><strong>Contenido oficial:</strong> Balón oficial, mascotas oficiales y banda sonora del torneo.</p>
+        <p>Estos elementos son parte de la identidad visual y sonora del Mundial 2026.</p>
+      </div>
+      <div class="media-grid">
+        <article class="media-card"><h2>Balón oficial: Al Rihla 2026</h2><p>Diseño inspirado en el territorio anfitrión, con texturas pensadas para mayor precisión y control en cada disparo.</p></article>
+        <article class="media-card"><h2>Mascota oficial: Lobo Mundial</h2><p>Una mascota dinámica que celebra el espíritu de la competencia con una historia de amistad y pasión por el fútbol.</p></article>
+        <article class="media-card"><h2>Banda sonora</h2><p>La canción oficial combina ritmos globales y melodías locales para animar el torneo en cada estadio.</p></article>
+      </div>
+      <p class="footer-note">Este contenido refleja la identidad oficial del Mundial y es el alma visual y sonora del evento.</p>
+    </div>
+  </body>
+</html>

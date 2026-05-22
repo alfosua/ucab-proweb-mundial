@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto - Mundial 2026</title>
+    <link rel="icon" href="assets/2026_FIFA_World_Cup_emblem.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="index.css" />
+    <style>
+      body { font-family: 'Kanit', sans-serif; background: #050b1b; color: #f4f7ff; margin:0; }
+      .app-shell { padding: 22px; min-height:100vh; }
+      .brand { display:flex; align-items:center; gap:12px; }
+      .brand-logo { width:40px; height:40px; border-radius:8px; display:grid; place-items:center; font-weight:800; }
+      .brand-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .nav-tabs { display:flex; gap:14px; padding:10px 12px; background:rgba(255,255,255,0.03); border-radius:8px; }
+      .nav-tabs a { color:rgba(255,255,255,0.78); font-weight:600; text-decoration:none; }
+      .page { max-width:900px; margin: 26px auto; }
+      .card { background: rgba(255,255,255,0.03); padding: 20px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); }
+      form { display:flex; flex-direction:column; gap:12px; }
+      label { display:flex; flex-direction:column; font-size:0.95rem; color:rgba(255,255,255,0.9); }
+      input, textarea { margin-top:8px; padding:10px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.35); color:#fff; }
+      button[type=submit] { margin-top:8px; padding:10px 14px; border-radius:8px; border:none; background:linear-gradient(90deg,#6f8cff,#1db3ff); color:#041226; font-weight:700; cursor:pointer; }
+      .note { color: rgba(255,255,255,0.72); font-size:0.9rem; margin-top:8px; }
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="brand-logo"><img src="assets/2026_FIFA_World_Cup_emblem.png" alt="Logo Mundial 2026" /></div>
+          <div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.72)">MUNDIAL 2026</div>
+            <h1 style="margin:0;font-size:1.05rem">Contacto</h1>
+          </div>
+        </div>
+        <nav class="nav-tabs" aria-label="Navegación principal">
+          <a href="bienvenida.html">Inicio</a>
+          <a href="contacto.html" class="active">Contacto</a>
+          <a href="sobre-grupo.html">Sobre el grupo</a>
+        </nav>
+      </header>
+
+      <main class="page">
+        <section class="card">
+          <h2>Escríbenos</h2>
+          <p class="note">Completa el formulario y se abrirá tu cliente de correo para enviar el mensaje.</p>
+          <form id="contactForm">
+            <label>Nombre completo
+              <input type="text" name="name" required placeholder="Tu nombre completo" />
+            </label>
+            <label>Email
+              <input type="email" name="email" required placeholder="tu@correo.com" />
+            </label>
+            <label>Mensaje
+              <textarea name="message" rows="6" required placeholder="Escribe tu mensaje..."></textarea>
+            </label>
+            <button type="submit">Enviar mensaje</button>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      document.getElementById('contactForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var f = e.target;
+        var name = encodeURIComponent(f.name.value.trim());
+        var email = encodeURIComponent(f.email.value.trim());
+        var message = encodeURIComponent(f.message.value.trim());
+        var subject = encodeURIComponent('Contacto desde sitio - ' + (f.name.value || 'Sin nombre'));
+        var body = encodeURIComponent('Nombre: ' + decodeURIComponent(name) + '\nEmail: ' + decodeURIComponent(email) + '\n\n') + message;
+        // Cambia esta dirección por la del destinatario real si se desea
+        var mailto = 'mailto:info@mundial2026.example?subject=' + subject + '&body=' + body;
+        window.location.href = mailto;
+      });
+    </script>
+  </body>
+</html>

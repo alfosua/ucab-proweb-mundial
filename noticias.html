@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Noticias del Mundial 2026</title>
+    <link rel="icon" href="assets/2026_FIFA_World_Cup_emblem.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        color: #f4f7ff;
+        background: #050b1b;
+        font-family: 'Kanit', sans-serif;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: radial-gradient(circle at top left, #2d4f96 0%, transparent 36%),
+          radial-gradient(circle at bottom right, #8457ff 0%, transparent 28%),
+          linear-gradient(180deg, #060913 0%, #050b1b 100%);
+      }
+      .page {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+      .header h1 { margin: 0; font-size: clamp(1.75rem, 2.8vw, 2.4rem); }
+      .header p { margin: 6px 0 0; color: rgba(255,255,255,0.72); font-size: 0.95rem; }
+      .back-link {
+        color: #ffffff;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.12);
+        padding: 12px 18px;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: transform .2s ease;
+      }
+      .back-link:hover { transform: translateY(-2px); }
+      .summary {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 4px;
+        padding: 20px;
+      }
+      .summary strong { color: #a8c7ff; }
+      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      .item-card {
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 4px;
+        padding: 16px;
+        min-height: 100px;
+      }
+      .item-card h2 { margin: 0 0 10px; font-size: 1rem; }
+      .item-card p { margin: 0; color: rgba(255,255,255,0.72); line-height: 1.55; }
+      .footer-note { color: rgba(255,255,255,0.66); font-size: 0.9rem; }
+      .page-hero { display: flex; justify-content: center; margin-bottom: 18px; }
+      .page-hero img { width: 100%; max-width: 100%; height: 150px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.12); object-fit: cover; }
+      @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } .page-hero { display: none; } }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="header">
+        <div>
+          <h1>Últimas noticias del Mundial 2026</h1>
+          <p>Mostrando 8 noticias recientes. En la liga de noticias completas hay 12 historias disponibles.</p>
+        </div>
+        <a href="bienvenida.html" class="back-link">← Volver a bienvenida</a>
+      </div>
+      <div class="page-hero">
+        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20280%20180'%3E%3Crect%20width='280'%20height='180'%20rx='30'%20fill='%23084d8f'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Kanit,%20sans-serif'%20font-size='32'%20fill='%23fff'%3ENOTI%3C/text%3E%3C/svg%3E" alt="Imagen de noticias mundiales" />
+      </div>
+      <div class="summary">
+        <p><strong>Total de noticias:</strong> 12</p>
+        <p>Encuentra los detalles más importantes del torneo, desde la organización de sedes hasta el calendario de partidos y las novedades de los equipos.</p>
+      </div>
+      <div class="grid">
+        <article class="item-card"><h2>Inauguración con espectáculo nocturno</h2><p>El estadio de la ciudad capital recibirá una ceremonia con drones, música y presentaciones internacionales.</p></article>
+        <article class="item-card"><h2>Venta de entradas y acceso seguro</h2><p>Las autoridades activaron al segundo grupo de ventas oficiales con controles de seguridad para los fanáticos.</p></article>
+        <article class="item-card"><h2>Al Rihla 2026, balón oficial</h2><p>El balón oficial combina tecnología de precisión con un diseño inspirado en los paisajes del país anfitrión.</p></article>
+        <article class="item-card"><h2>Requisitos de prueba y salud</h2><p>Se confirma un protocolo sanitario para visitantes internacionales y equipos durante todo el torneo.</p></article>
+        <article class="item-card"><h2>Entradas para Fan Fest</h2><p>Se lanzó una nueva fase de accesos para los eventos de fan zone en las principales ciudades sede.</p></article>
+        <article class="item-card"><h2>Nuevos árbitros internacionales</h2><p>La FIFA anunció el grupo de oficiales seleccionados para dirigir los primeros 16 partidos.</p></article>
+        <article class="item-card"><h2>Alianzas con tecnología deportiva</h2><p>El torneo presenta sistemas de análisis en tiempo real para mejorar la experiencia de los espectadores.</p></article>
+        <article class="item-card"><h2>Rendimiento de selecciones favoritas</h2><p>Las selecciones con mayor ranking ya completaron sus primeras concentraciones y amistosos previos.</p></article>
+      </div>
+      <p class="footer-note">Para ver toda la cobertura completa del Mundial, regresa al menú principal o explora las otras secciones.</p>
+    </div>
+  </body>
+</html>

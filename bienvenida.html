@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bienvenida - Mundial 2026</title>
+    <meta name="author" content="Nintendon't Studios" />
+    <meta
+      name="description"
+      content="Pantalla de bienvenida del Mundial 2026 con secciones de noticias, partidos, equipos y más"
+    />
+    <link rel="icon" href="assets/2026_FIFA_World_Cup_emblem.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <style>
+      :root {
+        color: #f4f7ff;
+        background: #050b1b;
+        font-family: 'Kanit', sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        background: radial-gradient(circle at top left, #2d4f96 0%, transparent 35%),
+          radial-gradient(circle at bottom right, #8b3cff 0%, transparent 28%),
+          linear-gradient(180deg, #060913 0%, #050b1b 100%);
+      }
+
+      .app-shell {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        padding: 24px;
+        gap: 24px;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .brand-logo { 
+        width:40px; 
+        height:40px; 
+        border-radius:8px; 
+        display:grid; 
+        place-items:center; 
+        font-weight:800; 
+        }
+
+      .brand-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .brand-text {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .brand-text span {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .brand-text h1 {
+        margin: 0;
+        font-size: 1.05rem;
+        letter-spacing: 0.08em;
+      }
+
+      .nav-tabs {
+        display: flex;
+        gap: 18px;
+        padding: 14px 18px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 4px;
+      }
+
+      .nav-tabs a,
+      .nav-tabs button {
+        border: none;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.72);
+        font-weight: 600;
+        cursor: pointer;
+        padding: 0;
+        text-decoration: none;
+      }
+
+      .nav-tabs a.active,
+      .nav-tabs button.active {
+        color: #ffffff;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(260px, 1fr));
+        gap: 10px;
+      }
+
+      .card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 4px;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+      }
+
+      .card h2,
+      .card h3,
+      .card p,
+      .card li {
+        position: relative;
+        margin: 0;
+      }
+
+      .card h2 {
+        font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+        line-height: 1.1;
+      }
+
+      .card h3 {
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.72);
+        margin-top: 10px;
+      }
+
+      .card p {
+        margin-top: 12px;
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.55;
+      }
+
+      .section-card {
+        min-height: 240px;
+      }
+
+      .section-card .section-subtitle {
+        margin-top: 12px;
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.45;
+        font-size: 0.95rem;
+      }
+
+      .preview-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .preview-item {
+        padding: 10px 12px;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #e8f0ff;
+        font-size: 0.84rem;
+        line-height: 1.4;
+      }
+
+      .preview-item strong {
+        color: #d9e7ff;
+      }
+
+      .read-more {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 12px;
+        padding: 8px 14px;
+        border-radius: 4px;
+        color: #fff;
+        background: rgba(109, 146, 255, 0.18);
+        border: 1px solid rgba(109, 146, 255, 0.26);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.88rem;
+      }
+
+      .read-more:hover {
+        background: rgba(109, 146, 255, 0.28);
+      }
+
+      .section-image {
+        width: 100%;
+        height: 90px;
+        display: block;
+        margin-bottom: 14px;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        object-fit: cover;
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .section-note {
+        margin-top: 14px;
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 0.92rem;
+      }
+
+      .card.media {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .media-card {
+        border-radius: 4px;
+        padding: 18px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .media-card h3 {
+        margin-bottom: 10px;
+      }
+
+      .media-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .count-chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(109, 146, 255, 0.17);
+        color: #d7e4ff;
+        font-size: 0.82rem;
+        letter-spacing: 0.08em;
+        margin-top: 16px;
+      }
+
+      .card.wide {
+        grid-column: span 2;
+      }
+
+      .card.wide .preview-list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+      .section-summary {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.72);
+        margin-top: 12px;
+      }
+
+      @media (max-width: 1100px) {
+        .hero-grid { grid-template-columns: 1fr; }
+        .card.wide { grid-column: span 1; }
+        .preview-list { grid-template-columns: 1fr; }
+        .media-grid { grid-template-columns: 1fr; }
+        .section-image { display: none; }
+      }
+
+      @media (max-width: 720px) {
+        .app-shell { padding: 16px; }
+        .nav-tabs { justify-content: space-between; flex-wrap: wrap; }
+        .card { padding: 18px; }
+      }
+
+      .card-footer {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 12px;
+        padding: 18px 24px;
+      }
+
+      .footer-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+
+      .footer-badge::before {
+        content: '';
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: inline-grid;
+        place-items: center;
+        color: #fff;
+        font-size: 0.95rem;
+        font-weight: 800;
+      }
+
+      .footer-badge span {
+        font-size: 0.83rem;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+     .footer-logo img {
+        width: 40px;
+        height: 40px;
+        border-radius: 16px  ;
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .grid-small {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .card.action {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .action .action-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .action .action-title .label {
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: #7dbaff;
+        font-size: 0.76rem;
+      }
+
+      .action .action-line {
+        margin-top: 12px;
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.55;
+      }
+
+      .action .action-icons {
+        display: flex;
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .action-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.06);
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .libertadores {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .libertadores .trophy {
+        width: 100%;
+        height: 92px;
+        border-radius: 4px;
+        background: linear-gradient(135deg, #ffb35c, #ffd27f);
+        display: grid;
+        place-items: center;
+        color: #191919;
+        font-size: 1.1rem;
+        font-weight: 800;
+      }
+
+      .libertadores p {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      @media (max-width: 1100px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          grid-template-rows: none;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .app-shell {
+          padding: 16px;
+        }
+
+        .nav-tabs {
+          justify-content: space-between;
+          flex-wrap: wrap;
+        }
+
+        .card {
+          min-height: 180px;
+          padding: 18px;
+        }
+
+        .preview-list,
+        .count-chip,
+        .media-grid {
+          display: none;
+        }
+
+        .section-subtitle {
+          margin-top: 12px;
+          font-size: 0.98rem;
+          color: rgba(255, 255, 255, 0.78);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <div class="topbar">
+        <div class="brand">
+          <div class="brand-logo"><img src="assets/2026_FIFA_World_Cup_emblem.png" alt="Logo Mundial 2026" /></div>
+          <div class="brand-text">
+            <span>MUNDIAL 2026</span>
+            <h1>INICIO</h1>
+          </div>
+        </div>
+        <div class="nav-tabs" role="navigation" aria-label="Menú principal">
+          <a href="bienvenida.html" class="active">Inicio</a>
+          <a href="contacto.html">Contacto</a>
+          <a href="sobre-grupo.html">Sobre el grupo</a>
+        </div>
+      </div>
+
+      <section class="hero-grid">
+        <article class="card section wide">
+          <img class="section-image" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20200%20120'%3E%3Crect%20width='200'%20height='120'%20rx='24'%20fill='%23084d8f'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Kanit,%20sans-serif'%20font-size='28'%20fill='%23fff'%3ENOTI%3C/text%3E%3C/svg%3E" alt="Noticias del Mundial" />
+          <h2>Últimas noticias</h2>
+          <p class="section-subtitle">8 noticias recientes del Mundial 2026 con lo más relevante de la organización, entradas y novedades del torneo.</p>
+          <div class="preview-list">
+            <div class="preview-item"><strong>1.</strong> Inauguración nocturna en la ciudad capital.</div>
+            <div class="preview-item"><strong>2.</strong> Lanzamiento de las entradas para Fan Fest.</div>
+            <div class="preview-item"><strong>3.</strong> Protocolo sanitario confirmado para equipos.</div>
+            <div class="preview-item"><strong>4.</strong> Al Rihla 2026 presentado como balón oficial.</div>
+            <div class="preview-item"><strong>5.</strong> Nuevos árbitros invitados para el torneo.</div>
+            <div class="preview-item"><strong>6.</strong> Fan zones con actividades en cuatro sedes.</div>
+            <div class="preview-item"><strong>7.</strong> Alianzas tecnológicas para transmisiones en vivo.</div>
+            <div class="preview-item"><strong>8.</strong> Cobertura especial de seguridad en estadios.</div>
+          </div>
+          <span class="count-chip">8 / 12 noticias</span>
+          <a href="noticias.html" class="read-more">Leer más</a>
+        </article>
+
+        <article class="card section">
+          <img class="section-image" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20200%20120'%3E%3Crect%20width='200'%20height='120'%20rx='24'%20fill='%2309825b'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Kanit,%20sans-serif'%20font-size='28'%20fill='%23fff'%3EVS%3C/text%3E%3C/svg%3E" alt="Próximos partidos" />
+          <h2>Próximos partidos</h2>
+          <p class="section-subtitle">8 de los encuentros más anticipados del calendario oficial del Mundial.</p>
+          <div class="preview-list">
+            <div class="preview-item">Argentina vs España</div>
+            <div class="preview-item">Brasil vs México</div>
+            <div class="preview-item">Francia vs Japón</div>
+            <div class="preview-item">Alemania vs Nigeria</div>
+            <div class="preview-item">Inglaterra vs Colombia</div>
+            <div class="preview-item">Estados Unidos vs Marruecos</div>
+            <div class="preview-item">Portugal vs Corea del Sur</div>
+            <div class="preview-item">Senegal vs Australia</div>
+          </div>
+          <span class="count-chip">8 / 12 partidos</span>
+          <a href="proximos-partidos.html" class="read-more">Leer más</a>
+        </article>
+
+        <article class="card section">
+          <img class="section-image" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20200%20120'%3E%3Crect%20width='200'%20height='120'%20rx='24'%20fill='%23b6681f'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Kanit,%20sans-serif'%20font-size='28'%20fill='%23fff'%3ETEAM%3C/text%3E%3C/svg%3E" alt="Equipos participantes" />
+          <h2>Equipos participantes</h2>
+          <p class="section-subtitle">8 selecciones visibles entre las 12 confirmadas en esta primera fase del torneo.</p>
+          <div class="preview-list">
+            <div class="preview-item">Argentina</div>
+            <div class="preview-item">Brasil</div>
+            <div class="preview-item">Francia</div>
+            <div class="preview-item">Alemania</div>
+            <div class="preview-item">Inglaterra</div>
+            <div class="preview-item">España</div>
+            <div class="preview-item">Estados Unidos</div>
+            <div class="preview-item">Japón</div>
+          </div>
+          <span class="count-chip">8 / 12 equipos</span>
+          <a href="equipos-participantes.html" class="read-more">Leer más</a>
+        </article>
+
+        <article class="card section">
+          <img class="section-image" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20200%20120'%3E%3Crect%20width='200'%20height='120'%20rx='24'%20fill='%23a02d7d'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Kanit,%20sans-serif'%20font-size='26'%20fill='%23fff'%3ECIUD%3C/text%3E%3C/svg%3E" alt="Ciudades anfitrionas" />
+          <h2>Ciudades anfitrionas</h2>
+          <p class="section-subtitle">4 de las 8 sedes del Mundial 2026 donde se disputarán partidos y actividades oficiales.</p>
+          <div class="preview-list">
+            <div class="preview-item">Ciudad Capital</div>
+            <div class="preview-item">Mar del Sol</div>
+            <div class="preview-item">Puerta del Norte</div>
+            <div class="preview-item">Valle Verde</div>
+          </div>
+          <span class="count-chip">4 / 8 sedes</span>
+          <a href="ciudades-anfitrionas.html" class="read-more">Leer más</a>
+        </article>
+
+        <article class="card section media">
+          <img class="section-image" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20200%20120'%3E%3Crect%20width='200'%20height='120'%20rx='24'%20fill='%231a6f32'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Kanit,%20sans-serif'%20font-size='28'%20fill='%23fff'%3EMED%3C/text%3E%3C/svg%3E" alt="Material oficial" />
+          <h2>Material oficial</h2>
+          <p class="section-subtitle">Balón oficial, mascotas y banda sonora del torneo en una sola vista.</p>
+          <div class="media-grid">
+            <div class="media-card"><h3>Balón oficial</h3><p>Al Rihla 2026, diseñado para precisión y velocidad en cada partido.</p></div>
+            <div class="media-card"><h3>Mascotas oficiales</h3><p>Presentación de personajes que representan la cultura y energía del Mundial.</p></div>
+            <div class="media-card"><h3>Banda sonora</h3><p>La música oficial que acompañará las ceremonias y ambientará el torneo.</p></div>
+          </div>
+          <a href="multimedia.html" class="read-more">Leer más</a>
+        </article>
+
+        <article class="card section">
+          <img class="section-image" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20200%20120'%3E%3Crect%20width='200'%20height='120'%20rx='24'%20fill='%23bf8a14'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Kanit,%20sans-serif'%20font-size='28'%20fill='%23fff'%3EEVT%3C/text%3E%3C/svg%3E" alt="Eventos y torneos" />
+          <h2>Próximos eventos y torneos</h2>
+          <p class="section-subtitle">8 eventos destacados que completan la experiencia alrededor del Mundial.</p>
+          <div class="preview-list">
+            <div class="preview-item">Ceremonia de apertura</div>
+            <div class="preview-item">Fan Fest principal</div>
+            <div class="preview-item">Partido de leyendas</div>
+            <div class="preview-item">Torneo juvenil sub-20</div>
+            <div class="preview-item">Festival cultural</div>
+            <div class="preview-item">Rally de aficionados</div>
+            <div class="preview-item">Concurso de goles</div>
+            <div class="preview-item">Presentación de trofeos</div>
+          </div>
+          <span class="count-chip">8 / 12 eventos</span>
+          <a href="eventos-torneos.html" class="read-more">Leer más</a>
+        </article>
+
+        <article class="card section">
+          <img class="section-image" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20200%20120'%3E%3Crect%20width='200'%20height='120'%20rx='24'%20fill='%23b72222'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Kanit,%20sans-serif'%20font-size='28'%20fill='%23fff'%3EVID%3C/text%3E%3C/svg%3E" alt="Videos de torneos anteriores" />
+          <h2>Videos de torneos anteriores</h2>
+          <p class="section-subtitle">8 momentos históricos en video. La colección completa contiene 12 clips.</p>
+          <div class="preview-list">
+            <div class="preview-item">Brasil 2014: gran final</div>
+            <div class="preview-item">España 2010: gol decisivo</div>
+            <div class="preview-item">Argentina 2022: tanda de penales</div>
+            <div class="preview-item">Italia 2006: final en drama</div>
+            <div class="preview-item">Alemania 2014: jugada icónica</div>
+            <div class="preview-item">Uruguay 1930: primer torneo</div>
+            <div class="preview-item">Francia 1998: primer título</div>
+            <div class="preview-item">Reactiva de goles memorables</div>
+          </div>
+          <span class="count-chip">8 / 12 videos</span>
+          <a href="videos-anteriores.html" class="read-more">Leer más</a>
+        </article>
+      </section>
+
+      <footer class="card-footer">
+        <div class="footer-logo"><img src="assets/2026_FIFA_World_Cup_emblem.png" alt="Logo Mundial 2026"></div>
+        <div class="footer-badge">MUNDIAL 2026</div>
+      </footer>
+    </div>
+  </body>
+</html>
