@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIFA World Cup 2026 - Próximo Partido</title>
+  <meta name="author" content="Nintendon't Studios" />
+  <meta name="description" content="Detalle de partido previo con cuenta regresiva, contexto y alineaciones." />
+  <link rel="icon" href="assets/2026_FIFA_World_Cup_emblem.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,600;0,800;1,400;1,800&amp;display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/47c95596a2.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reseter.css/1.0.8/reseter.min.css" integrity="sha512-w7sMEM5yzmuVP9ic9zpCLk/+whwrrhkH5g83x0wi5DEPo1y+/JniMmCVfbtjw5JipFpcCb4gyF2xLES6tc+TxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root{--card-bg:rgba(20,20,40,.72);--card-border:rgba(255,255,255,.14);--text-muted:#a0a0b0;--mex:#ff4d6d;--mex-soft:#ff8fa3;--can:#4cc9f0;--can-soft:#caf0f8;--lime:#b8ff52}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Kanit',sans-serif;background:radial-gradient(circle at top right,rgba(76,201,240,.16),transparent 28%),radial-gradient(circle at left center,rgba(123,44,191,.22),transparent 32%),linear-gradient(135deg,#10101a 0%,#2a1b42 50%,#15152a 100%);background-attachment:fixed;color:#fff;min-height:100vh;overflow-x:hidden;text-transform:uppercase}
+    .top-bar{display:flex;justify-content:space-between;gap:12px;padding:12px 40px 10px;font-size:.78rem;letter-spacing:1px;color:var(--text-muted);border-bottom:1px solid rgba(255,255,255,.05)}
+    .main-nav{padding:0 40px;display:flex;gap:6px;margin-top:14px;border-bottom:1px solid rgba(255,255,255,.1);flex-wrap:wrap}
+    .nav-tab{padding:10px 28px;font-size:1.02rem;color:var(--text-muted);text-decoration:none;transition:all .2s;clip-path:polygon(10% 0,100% 0,90% 100%,0 100%)}
+    .nav-tab.active,.nav-tab:hover{background:linear-gradient(90deg,#7b2cbf 0%,#4cc9f0 100%);color:#fff;font-weight:600}
+    .page-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1480px;margin:0 auto;padding:22px 40px 40px}
+    .card{position:relative;overflow:hidden;border:1px solid var(--card-border);background:var(--card-bg);box-shadow:0 12px 28px rgba(0,0,0,.3)}
+    .card-title{padding:16px 18px 0;font-size:1.12rem;font-weight:800;letter-spacing:.05em}
+    .card-body{padding:16px 18px 18px;color:#d9d9e6;font-size:.88rem;line-height:1.5;text-transform:none}
+    .hero{grid-column:span 2;min-height:210px;background:linear-gradient(90deg,rgba(8,10,20,.96) 0%,rgba(8,10,20,.74) 48%,rgba(76,201,240,.12) 100%)}
+    .hero-badge{display:inline-block;margin:18px 0 0 18px;max-width:calc(100% - 36px);padding:4px 10px;background:var(--lime);color:#09111c;font-size:.76rem;font-weight:800;clip-path:polygon(5% 0,100% 0,95% 100%,0 100%)}
+    .hero-title{margin:12px 18px 6px;font-size:2.15rem;font-style:italic;font-weight:800;line-height:.9}
+    .teams{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;padding:2px 18px 10px}
+    .team-side{display:flex;align-items:center;gap:12px}.team-side.right{justify-content:flex-end}
+    .crest{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;color:#09111c;font-size:1.05rem;font-weight:800;border:2px solid rgba(255,255,255,.75)}
+    .crest.mex{background:linear-gradient(135deg,var(--mex),var(--mex-soft))}.crest.can{background:linear-gradient(135deg,var(--can),var(--can-soft))}
+    .team-meta{font-size:.82rem;color:var(--text-muted);letter-spacing:.08em}
+    .vs-core{text-align:center}.vs-core strong{display:block;font-size:2.65rem;font-style:italic;line-height:.88}
+    .hero-countdown{margin:0 18px 12px;padding:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04)}
+    .hero-copy{padding:0 18px 14px;max-width:900px;color:#cfd2e2;text-transform:none;line-height:1.45}
+    .info-stack{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .info-pill{display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);text-transform:uppercase;font-size:.8rem;letter-spacing:.08em;color:#fff}
+    .countdown-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .countdown-box{text-align:center;padding:12px 8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
+    .countdown-box strong{display:block;font-size:1.55rem;line-height:1}.countdown-box span{display:block;margin-top:6px;font-size:.72rem;color:var(--text-muted);letter-spacing:.14em}
+    .full{grid-column:1/-1}.lineup-layout{display:grid;grid-template-columns:1.55fr .85fr;gap:16px}.pitch-scroll{overflow-x:visible}
+    .pitch{position:relative;min-height:690px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,transparent calc(100% - 40px),rgba(9,11,21,.6) calc(100% - 40px)),linear-gradient(180deg,rgba(255,255,255,.03),transparent 14%),linear-gradient(90deg,transparent 49.6%,rgba(255,255,255,.24) 49.8%,rgba(255,255,255,.24) 50.2%,transparent 50.4%) top / 100% calc(100% - 40px) no-repeat,linear-gradient(180deg,#161b20 0%,#12171c 48%,#0d1216 100%)}
+    .pitch:before{content:'';position:absolute;left:22px;right:22px;top:22px;bottom:62px;border:2px solid rgba(255,255,255,.35)}.pitch:after{content:'';position:absolute;left:22px;right:22px;top:calc((100% - 40px) / 2 - 1px);border-top:2px solid rgba(255,255,255,.35)}
+    .center-circle{position:absolute;left:calc(50% - 56px);top:calc((100% - 40px) / 2 - 56px);width:112px;height:112px;border-radius:50%;border:2px solid rgba(255,255,255,.35)}
+    .half-tag{position:absolute;left:50%;transform:translateX(-50%);padding:7px 12px;font-size:.74rem;background:rgba(9,11,21,.82);border:1px solid rgba(255,255,255,.1);letter-spacing:.14em}.half-tag.top{top:10px}.half-tag.bottom{bottom:10px}
+    .player{position:absolute;width:76px;transform:translate(-50%,-50%);text-align:center}.player-node{position:relative;width:40px;height:40px;margin:0 auto 18px;border-radius:999px;color:transparent;font-size:.01rem;border:2px solid rgba(255,255,255,.78);background:#fff center/cover no-repeat;box-shadow:0 10px 18px rgba(0,0,0,.28)}
+    .player-node:before{content:attr(data-number);position:absolute;left:50%;top:calc(100% - 2px);transform:translateX(-50%);min-width:24px;padding:4px 6px;border-radius:4px;color:#fff;font-size:.66rem;line-height:1;font-weight:800}.player-node:after{content:attr(data-rating);position:absolute;left:-8px;bottom:-8px;min-width:24px;padding:3px 4px;border-radius:5px;background:#1a222d;color:#fff;font-size:.62rem;line-height:1;font-weight:800;border:1px solid rgba(255,255,255,.12)}
+    .player.mex .player-node:before{background:linear-gradient(135deg,var(--mex),var(--mex-soft))}.player.can .player-node:before{background:linear-gradient(135deg,var(--can),var(--can-soft))}
+    .player-name{font-size:.66rem;line-height:1.15;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+    .state-list{display:grid;gap:10px}.state-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);font-size:.84rem;letter-spacing:.06em}.state-row strong{color:var(--lime)}
+    .squad-panels{display:grid;gap:16px}.squad-box{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);padding:14px}.squad-header{display:flex;justify-content:space-between;gap:10px;margin-bottom:12px;font-size:.84rem;color:var(--text-muted)}.squad-row{display:flex;justify-content:space-between;gap:10px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.06);font-size:.84rem;color:#ececf6}.status-note{padding:14px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);font-size:.84rem;color:#d5d5e3;text-transform:none;line-height:1.5}
+    @media (max-width:1180px){.page-grid{grid-template-columns:repeat(2,1fr)}.hero,.info-stack{grid-column:span 2}.info-stack,.lineup-layout{grid-template-columns:1fr}}
+    @media (max-width:760px){.top-bar{padding:10px 16px;display:grid;font-size:.68rem}.main-nav{padding-left:16px;padding-right:16px;overflow-x:auto;flex-wrap:nowrap}.nav-tab{padding:9px 22px;font-size:.9rem;white-space:nowrap}.page-grid{grid-template-columns:1fr;padding:16px;gap:14px}.hero,.info-stack,.full{grid-column:1/-1}.info-stack{grid-template-columns:1fr}.card:hover{transform:none}.card-title{padding:14px 14px 0;font-size:1rem}.card-body{padding:14px}.teams{grid-template-columns:1fr;gap:12px}.countdown-grid{grid-template-columns:repeat(2,1fr)}.team-side,.team-side.right{justify-content:center;text-align:center}.team-side.right{flex-direction:row-reverse}.hero-badge{margin:14px 14px 0;max-width:calc(100% - 28px);padding:5px 14px 5px 18px;white-space:normal;line-height:1.1;clip-path:polygon(0 0,100% 0,96% 100%,0 100%)}.hero-title{font-size:2rem}.hero-countdown{margin-left:14px;margin-right:14px}.hero-copy{padding-left:14px;padding-right:14px}.pitch-scroll{overflow-x:auto;padding-bottom:8px}.pitch{min-width:760px;min-height:720px}.player{width:64px}.player-node{width:34px;height:34px;margin-bottom:16px}.player-name{font-size:.58rem}.squad-header,.squad-row{display:grid;gap:6px}.status-note{font-size:.8rem}}
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div>USA / CANADÁ / MÉXICO</div>
+    <div>WORLD CUP 2026 MATCH CENTER</div>
+  </div>
+  <nav class="main-nav">
+    <a href="#" class="nav-tab">INICIO</a>
+    <a href="#" class="nav-tab active">PARTIDOS</a>
+    <a href="clasificacion-brackets.html" class="nav-tab">CLASIFICACIÓN</a>
+    <a href="#" class="nav-tab">EQUIPOS</a>
+    <a href="#" class="nav-tab">CIUDADES</a>
+    <a href="balon.html" class="nav-tab">BALÓN</a>
+    <a href="mascotas.html" class="nav-tab">MASCOTAS</a>
+  </nav>
+  <main class="page-grid">
+    <section class="card hero">
+      <div class="hero-badge">PRÓXIMO PARTIDO</div>
+      <h1 class="hero-title">MÉXICO VS CANADÁ</h1>
+      <div class="teams">
+        <div class="team-side">
+          <div class="crest mex">MEX</div>
+          <div>
+            <div class="text-2xl font-bold">MÉXICO</div>
+            <div class="team-meta">CUARTOS DE FINAL</div>
+          </div>
+        </div>
+        <div class="vs-core">
+          <strong>VS</strong>
+          <div class="team-meta">21 JUL 2026 · 20:00</div>
+        </div>
+        <div class="team-side right">
+          <div class="text-right">
+            <div class="text-2xl font-bold">CANADÁ</div>
+            <div class="team-meta">ESTADIO AZTECA</div>
+          </div>
+          <div class="crest can">CAN</div>
+        </div>
+      </div>
+      <div class="hero-countdown">
+        <div class="countdown-grid">
+          <div class="countdown-box"><strong>03</strong><span>DÍAS</span></div>
+          <div class="countdown-box"><strong>18</strong><span>HORAS</span></div>
+          <div class="countdown-box"><strong>42</strong><span>MIN</span></div>
+          <div class="countdown-box"><strong>09</strong><span>SEG</span></div>
+        </div>
+      </div>
+      <p class="hero-copy">
+        Cuartos de final en el Estadio Azteca. México llega como líder del Grupo A y Canadá prepara
+        un bloque agresivo con Davies y Buchanan atacando los costados.
+      </p>
+    </section>
+
+    <aside class="info-stack">
+      <div class="card">
+        <div class="card-title">CONTEXTO DEL JUEGO</div>
+        <div class="card-body">
+          <div class="info-pill"><i class="fa-solid fa-calendar-days"></i> 21 JUL 2026 · 20:00</div>
+          <div class="info-pill"><i class="fa-solid fa-location-dot"></i> CIUDAD DE MÉXICO</div>
+          <div class="info-pill"><i class="fa-solid fa-stadium"></i> ESTADIO AZTECA</div>
+          <div class="info-pill"><i class="fa-solid fa-layer-group"></i> CUARTOS DE FINAL</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">ESTADO DEL PARTIDO</div>
+        <div class="card-body">
+          <div class="state-list">
+            <div class="state-row"><span>Marcador</span><strong>0-0</strong></div>
+            <div class="state-row"><span>Alineaciones</span><strong>Probables</strong></div>
+            <div class="state-row"><span>Árbitro</span><strong>Por confirmar</strong></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="card full">
+      <div class="card-title">ALINEACIONES PROBABLES</div>
+      <div class="card-body">
+        <div class="lineup-layout">
+          <div class="pitch-scroll">
+          <div class="pitch">
+            <div class="center-circle"></div>
+            <div class="half-tag top">MÉXICO · 4-3-3</div>
+            <div class="half-tag bottom">CANADÁ · 4-3-3</div>
+            <div class="player mex" style="left:50%;top:14%;"><div class="player-node" data-number="9" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=12');">SG</div><div class="player-name">GIMÉNEZ</div></div>
+            <div class="player mex" style="left:26%;top:22%;"><div class="player-node" data-number="11" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=14');">HL</div><div class="player-name">LOZANO</div></div>
+            <div class="player mex" style="left:74%;top:22%;"><div class="player-node" data-number="17" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=15');">JA</div><div class="player-name">ANTUNA</div></div>
+            <div class="player mex" style="left:20%;top:32%;"><div class="player-node" data-number="6" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=16');">LC</div><div class="player-name">CHÁVEZ</div></div>
+            <div class="player mex" style="left:50%;top:29%;"><div class="player-node" data-number="10" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=18');">OP</div><div class="player-name">ORBELÍN</div></div>
+            <div class="player mex" style="left:80%;top:32%;"><div class="player-node" data-number="14" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=19');">EA</div><div class="player-name">EDSON</div></div>
+            <div class="player mex" style="left:16%;top:42%;"><div class="player-node" data-number="3" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=20');">JG</div><div class="player-name">GALLARDO</div></div>
+            <div class="player mex" style="left:38%;top:40%;"><div class="player-node" data-number="15" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=21');">CM</div><div class="player-name">MONTES</div></div>
+            <div class="player mex" style="left:62%;top:40%;"><div class="player-node" data-number="2" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=22');">JV</div><div class="player-name">VÁSQUEZ</div></div>
+            <div class="player mex" style="left:84%;top:42%;"><div class="player-node" data-number="19" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=23');">JS</div><div class="player-name">SÁNCHEZ</div></div>
+            <div class="player mex" style="left:50%;top:44%;"><div class="player-node" data-number="1" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=24');">MO</div><div class="player-name">OCHOA</div></div>
+            <div class="player can" style="left:18%;top:62%;"><div class="player-node" data-number="19" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=31');">AD</div><div class="player-name">DAVIES</div></div>
+            <div class="player can" style="left:50%;top:62%;"><div class="player-node" data-number="9" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=32');">JD</div><div class="player-name">DAVID</div></div>
+            <div class="player can" style="left:82%;top:62%;"><div class="player-node" data-number="10" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=33');">TB</div><div class="player-name">BUCHANAN</div></div>
+            <div class="player can" style="left:28%;top:72%;"><div class="player-node" data-number="7" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=34');">SE</div><div class="player-name">EUSTÁQUIO</div></div>
+            <div class="player can" style="left:50%;top:72%;"><div class="player-node" data-number="8" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=35');">IK</div><div class="player-name">KONÉ</div></div>
+            <div class="player can" style="left:72%;top:72%;"><div class="player-node" data-number="13" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=36');">AH</div><div class="player-name">HUTCHINSON</div></div>
+            <div class="player can" style="left:20%;top:83%;"><div class="player-node" data-number="22" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=37');">LR</div><div class="player-name">LARYEA</div></div>
+            <div class="player can" style="left:40%;top:81%;"><div class="player-node" data-number="4" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=38');">KM</div><div class="player-name">MILLER</div></div>
+            <div class="player can" style="left:60%;top:81%;"><div class="player-node" data-number="5" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=39');">VC</div><div class="player-name">CORNELIUS</div></div>
+            <div class="player can" style="left:80%;top:83%;"><div class="player-node" data-number="2" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=40');">AJ</div><div class="player-name">JOHNSTON</div></div>
+            <div class="player can" style="left:50%;top:85%;"><div class="player-node" data-number="1" data-rating="--" style="background-image:url('https://i.pravatar.cc/80?img=41');">MB</div><div class="player-name">BORJAN</div></div>
+          </div>
+          </div>
+          <div class="squad-panels">
+            <div class="squad-box">
+              <div class="squad-header"><span>MÉXICO · DT JAVIER AGUIRRE</span><span>4-3-3</span></div>
+              <div class="squad-row"><span>INICIALES</span><span>11 JUGADORES</span></div>
+              <div class="squad-row"><span>SUPLENTES</span><span>ACEVEDO, HUERTA, QUIÑONES, ROMO</span></div>
+            </div>
+            <div class="squad-box">
+              <div class="squad-header"><span>CANADÁ · DT JESSE MARSCH</span><span>4-3-3</span></div>
+              <div class="squad-row"><span>INICIALES</span><span>11 JUGADORES</span></div>
+              <div class="squad-row"><span>SUPLENTES</span><span>CREPEAU, MILLAR, OSORIO, SHAFFELBURG</span></div>
+            </div>
+            <div class="status-note">
+              Alineaciones probables sujetas a confirmación oficial noventa minutos antes del inicio.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIFA World Cup 2026 - Cargando Datos</title>
+  <meta name="author" content="Nintendon't Studios" />
+  <meta
+    name="description"
+    content="Estados de carga del sitio del Mundial 2026 para partidos, tablas y llaves."
+  />
+
+  <link rel="icon" href="assets/2026_FIFA_World_Cup_emblem.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,600;0,800;1,400;1,800&display=swap"
+    rel="stylesheet"
+  />
+  <script src="https://kit.fontawesome.com/47c95596a2.js" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --card-bg: rgba(20, 20, 40, 0.72);
+      --card-border: rgba(255, 255, 255, 0.15);
+      --text-main: #ffffff;
+      --text-muted: #a0a0b0;
+      --cyan: #4cc9f0;
+      --magenta: #7b2cbf;
+      --lime: #b8ff52;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Kanit', sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(76, 201, 240, 0.16), transparent 26%),
+        radial-gradient(circle at left center, rgba(123, 44, 191, 0.22), transparent 30%),
+        linear-gradient(135deg, #10101a 0%, #2a1b42 50%, #15152a 100%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      min-height: 100vh;
+      text-transform: uppercase;
+      overflow-x: hidden;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 40px 10px;
+      font-size: 0.78rem;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .main-nav {
+      padding: 0 40px;
+      display: flex;
+      gap: 6px;
+      margin-top: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      flex-wrap: wrap;
+    }
+
+    .nav-tab {
+      padding: 10px 28px;
+      font-size: 1.02rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.2s;
+      clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+    }
+
+    .nav-tab.active,
+    .nav-tab:hover {
+      background: linear-gradient(90deg, var(--magenta) 0%, var(--cyan) 100%);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .page-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 1fr;
+      gap: 16px;
+      padding: 22px 40px 40px;
+      max-width: 1480px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .card {
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.3);
+      overflow: hidden;
+      padding: 18px;
+    }
+
+    .hero-card {
+      background:
+        linear-gradient(115deg, rgba(8, 10, 20, 0.95) 0%, rgba(8, 10, 20, 0.74) 55%, rgba(76, 201, 240, 0.12) 100%);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: var(--lime);
+      color: #09111c;
+      font-size: 0.76rem;
+      font-weight: 800;
+      clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+    }
+
+    .hero-title {
+      margin-top: 18px;
+      font-size: 2.7rem;
+      line-height: 0.92;
+      font-style: italic;
+      font-weight: 800;
+    }
+
+    .hero-copy {
+      margin-top: 14px;
+      color: #d4d7e8;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      text-transform: none;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: 0.06em;
+    }
+
+    .shimmer {
+      position: relative;
+      overflow: hidden;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .shimmer::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      transform: translateX(-100%);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent);
+      animation: shimmer 1.8s infinite;
+    }
+
+    .row {
+      display: grid;
+      gap: 10px;
+    }
+
+    .row-two {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .spinner-wrap {
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      text-align: center;
+    }
+
+    .spinner {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 4px solid rgba(255,255,255,0.12);
+      border-top-color: var(--cyan);
+      border-right-color: var(--magenta);
+      animation: spin 1s linear infinite;
+    }
+
+    .live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.05);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+    }
+
+    @keyframes shimmer {
+      100% { transform: translateX(100%); }
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 1180px) {
+      .page-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .top-bar,
+      .main-nav,
+      .page-grid {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .main-nav {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div>FIFA WORLD CUP 2026</div>
+    <div>LOADING STATES</div>
+  </div>
+
+  <nav class="main-nav">
+    <a href="#" class="nav-tab">INICIO</a>
+    <a href="#" class="nav-tab">PARTIDOS</a>
+    <a href="clasificacion-brackets.html" class="nav-tab">CLASIFICACIÓN</a>
+    <a href="#" class="nav-tab">EQUIPOS</a>
+    <a href="#" class="nav-tab">CIUDADES</a>
+    <a href="balon.html" class="nav-tab">BALÓN</a>
+    <a href="mascotas.html" class="nav-tab">MASCOTAS</a>
+    <a href="estados-carga.html" class="nav-tab active">CARGA</a>
+  </nav>
+
+  <main class="page-grid">
+    <section class="card hero-card">
+      <span class="hero-badge">CARGANDO INFORMACIÓN</span>
+      <h1 class="hero-title">ESTADOS DE INTERFAZ</h1>
+      <p class="hero-copy">
+        Primera entrega sin lógica funcional, pero con estados visuales definidos para el consumo
+        posterior del API. El sitio evita vacíos visuales mientras llegan partidos, tablas y llaves.
+      </p>
+    </section>
+
+    <section class="card">
+      <div class="section-title">DETALLE DE PARTIDO</div>
+      <div class="row">
+        <div class="shimmer" style="height: 34px; width: 160px;"></div>
+        <div class="row" style="grid-template-columns: repeat(3, 1fr); display: grid;">
+          <div class="shimmer" style="height: 78px;"></div>
+          <div class="shimmer" style="height: 78px;"></div>
+          <div class="shimmer" style="height: 78px;"></div>
+        </div>
+        <div class="shimmer" style="height: 120px;"></div>
+        <div class="shimmer" style="height: 88px;"></div>
+        <div class="shimmer" style="height: 10px;"></div>
+        <div class="shimmer" style="height: 10px; width: 88%;"></div>
+        <div class="shimmer" style="height: 10px; width: 74%;"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title">TABLAS Y BRACKETS</div>
+      <div class="row">
+        <div class="shimmer" style="height: 34px; width: 190px;"></div>
+        <div class="row-two">
+          <div class="shimmer" style="height: 10px;"></div>
+          <div class="shimmer" style="height: 10px; width: 28px;"></div>
+        </div>
+        <div class="row-two">
+          <div class="shimmer" style="height: 10px;"></div>
+          <div class="shimmer" style="height: 10px; width: 28px;"></div>
+        </div>
+        <div class="row-two">
+          <div class="shimmer" style="height: 10px;"></div>
+          <div class="shimmer" style="height: 10px; width: 28px;"></div>
+        </div>
+        <div class="row-two">
+          <div class="shimmer" style="height: 10px;"></div>
+          <div class="shimmer" style="height: 10px; width: 28px;"></div>
+        </div>
+        <div class="shimmer" style="height: 112px;"></div>
+      </div>
+    </section>
+
+    <section class="card" style="grid-column: 1 / -1;">
+      <div class="section-title">ACTUALIZACIÓN EN VIVO</div>
+      <div class="spinner-wrap">
+        <div class="spinner"></div>
+        <div class="text-2xl font-bold">SINCRONIZANDO RESULTADOS</div>
+        <p style="max-width: 420px; color: #d4d7e8; line-height: 1.6; text-transform: none;">
+          Este estado funciona para cambios de filtro, refresco del marcador y actualizaciones de
+          las fases de eliminación directa sin desmontar toda la pantalla.
+        </p>
+        <div class="live-pill"><i class="fa-solid fa-wave-square"></i> ACTUALIZANDO DESDE EL API</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

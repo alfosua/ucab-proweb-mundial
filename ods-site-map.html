@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FIFA World Cup 2026 - Mapa del Sitio y User Flow</title>
+    <meta name="author" content="Nintendon't Studios" />
+    <meta
+      name="description"
+      content="Mapa del sitio y user flow para la experiencia del Mundial 2026."
+    />
+    <link rel="icon" href="assets/2026_FIFA_World_Cup_emblem.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/47c95596a2.js" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reseter.css/1.0.8/reseter.min.css"
+      integrity="sha512-w7sMEM5yzmuVP9ic9zpCLk/+whwrrhkH5g83x0wi5DEPo1y+/JniMmCVfbtjw5JipFpcCb4gyF2xLES6tc+TxA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="/mockups.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="top-bar">
+        <div>Arquitectura de navegación</div>
+        <div>Mapa del sitio + user flow</div>
+      </div>
+
+      <nav class="main-nav">
+        <a href="balon.html" class="nav-tab">Balón</a>
+        <a href="mascotas.html" class="nav-tab">Mascotas</a>
+        <a href="ods-site-map.html" class="nav-tab active">Mapa y Flow</a>
+        <a href="partido-detalle.html" class="nav-tab">Detalle Partido</a>
+        <a href="alineacion-cancha.html" class="nav-tab">Alineación</a>
+        <a href="clasificacion-brackets.html" class="nav-tab">Clasificación</a>
+        <a href="estados-carga.html" class="nav-tab">Carga</a>
+      </nav>
+
+      <section class="hero-banner">
+        <div class="hero-inner">
+          <div>
+            <span class="eyebrow"><i class="fa-solid fa-sitemap"></i> Information Architecture</span>
+            <h1 class="page-title">Mapa del Sitio</h1>
+            <p class="page-subtitle">
+              Estructura global propuesta para que el usuario llegue rápido a partidos, grupos,
+              llaves, equipos y contenidos editoriales ya presentes como balón y mascotas.
+            </p>
+          </div>
+          <div class="hero-metrics">
+            <div class="metric-card">
+              <span class="metric-label">Hub principal</span>
+              <span class="metric-value">Inicio / Match Center</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label">Rutas críticas</span>
+              <span class="metric-value">Partido y clasificación</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label">Contenidos</span>
+              <span class="metric-value">Mascotas, balón, sedes</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label">Objetivo</span>
+              <span class="metric-value">Navegación clara</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sitemap-grid mt-6">
+        <div class="panel panel-muted">
+          <h2 class="section-title">Mapa del sitio</h2>
+          <div class="tree-root">
+            <div class="tree-node border-cyan-300/30 bg-cyan-300/8">
+              <strong>Inicio</strong>
+              <p>Hero, partidos destacados, countdown, accesos rápidos a grupos, llaves y selección anfitriona.</p>
+            </div>
+            <div class="tree-column">
+              <div class="tree-node">
+                <strong>Partidos</strong>
+                <p>Calendario, resultado en vivo, detalle de partido, cronología y alineaciones.</p>
+              </div>
+              <div class="tree-node">
+                <strong>Clasificación</strong>
+                <p>Tablas por grupo, vista global y bracket de eliminación directa.</p>
+              </div>
+              <div class="tree-node">
+                <strong>Equipos</strong>
+                <p>Plantillas, estadísticas agregadas, jugadores destacados y sedes relacionadas.</p>
+              </div>
+              <div class="tree-node">
+                <strong>Explorar</strong>
+                <p>Balón oficial, mascotas, estadios, ciudades sede y piezas editoriales del torneo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-muted">
+          <h2 class="section-title">User flow principal</h2>
+          <div class="flow-grid">
+            <div class="flow-card">
+              <div class="flow-step">1</div>
+              <strong>Entrada por inicio</strong>
+              <p>El usuario aterriza en una portada con partido destacado y accesos directos a jornada actual.</p>
+            </div>
+            <div class="flow-card">
+              <div class="flow-step">2</div>
+              <strong>Selección de partido</strong>
+              <p>Desde la tarjeta hero o el calendario, abre el detalle para revisar marcador, highlights y cronología.</p>
+            </div>
+            <div class="flow-card">
+              <div class="flow-step">3</div>
+              <strong>Profundización táctica</strong>
+              <p>Dentro del detalle navega a alineaciones, estadísticas extendidas y rendimiento por jugador.</p>
+            </div>
+            <div class="flow-card">
+              <div class="flow-step">4</div>
+              <strong>Contexto competitivo</strong>
+              <p>Salta a clasificación para entender posición del grupo o camino proyectado en las llaves.</p>
+            </div>
+            <div class="flow-card">
+              <div class="flow-step">5</div>
+              <strong>Exploración secundaria</strong>
+              <p>Desde el nav global puede ir a balón, mascotas y otras piezas más editoriales sin romper la continuidad visual.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
