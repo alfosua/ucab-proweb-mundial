@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIFA World Cup 2026 - Consistencia de Datos</title>
+  <meta name="author" content="Nintendon't Studios" />
+  <meta name="description" content="Revisión de consistencia entre mockups y estructura esperada de la API del Mundial 2026." />
+  <link rel="icon" href="assets/2026_FIFA_World_Cup_emblem.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,600;0,800;1,400;1,800&amp;display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/47c95596a2.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root{--card-bg:rgba(20,20,40,.72);--card-border:rgba(255,255,255,.14);--text-muted:#a0a0b0;--lime:#b8ff52;--cyan:#4cc9f0;--red:#ff4d6d;--gold:#ffca3a}
+    *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Kanit',sans-serif;background:radial-gradient(circle at top right,rgba(76,201,240,.16),transparent 28%),radial-gradient(circle at left center,rgba(123,44,191,.22),transparent 32%),linear-gradient(135deg,#10101a 0%,#2a1b42 50%,#15152a 100%);background-attachment:fixed;color:#fff;min-height:100vh;overflow-x:hidden;text-transform:uppercase}
+    .top-bar{display:flex;justify-content:space-between;gap:12px;padding:12px 40px 10px;font-size:.78rem;letter-spacing:1px;color:var(--text-muted);border-bottom:1px solid rgba(255,255,255,.05)}.main-nav{padding:0 40px;display:flex;gap:6px;margin-top:14px;border-bottom:1px solid rgba(255,255,255,.1);flex-wrap:wrap}.nav-tab{padding:10px 28px;font-size:1.02rem;color:var(--text-muted);text-decoration:none;clip-path:polygon(10% 0,100% 0,90% 100%,0 100%)}.nav-tab.active,.nav-tab:hover{background:linear-gradient(90deg,#7b2cbf 0%,#4cc9f0 100%);color:#fff;font-weight:600}
+    .page-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1480px;margin:0 auto;padding:22px 40px 40px}.card{position:relative;overflow:hidden;border:1px solid var(--card-border);background:var(--card-bg);box-shadow:0 12px 28px rgba(0,0,0,.3)}.card-title{padding:16px 18px 0;font-size:1.12rem;font-weight:800;letter-spacing:.05em}.card-body{padding:16px 18px 18px;color:#d9d9e6;font-size:.88rem;line-height:1.5;text-transform:none}
+    .hero{grid-column:span 2;min-height:220px;background:linear-gradient(90deg,rgba(8,10,20,.96),rgba(8,10,20,.72),rgba(76,201,240,.12))}.hero-badge{display:inline-block;margin:18px 18px 0;max-width:calc(100% - 36px);padding:5px 14px 5px 18px;background:var(--lime);color:#09111c;font-size:.76rem;font-weight:800;clip-path:polygon(0 0,100% 0,96% 100%,0 100%)}.hero-title{margin:12px 18px 10px;font-size:2.35rem;font-style:italic;font-weight:800;line-height:.92}.hero-copy{padding:0 18px 16px;max-width:900px;color:#cfd2e2;text-transform:none;line-height:1.45}
+    .status-panel{grid-column:span 2;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.status-box{padding:16px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04)}.status-box strong{display:block;color:var(--lime);font-size:1.35rem}.status-box span{color:var(--text-muted);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+    .full{grid-column:1/-1}.matrix{display:grid;gap:12px}.row{display:grid;grid-template-columns:.8fr 1.1fr 1.2fr .7fr;gap:12px;align-items:start;padding:14px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04)}.row.header{color:#09111c;background:var(--lime);font-weight:800}.row div{overflow-wrap:anywhere}.tag{display:inline-block;padding:4px 8px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#fff;text-transform:uppercase}.ok{color:var(--lime)}.warn{color:var(--gold)}.sample{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#cfd2e2;font-size:.8rem}
+    @media(max-width:1180px){.page-grid{grid-template-columns:repeat(2,1fr)}.hero,.status-panel{grid-column:span 2}.row{grid-template-columns:1fr 1fr}}@media(max-width:760px){.top-bar{padding:10px 16px;display:grid;font-size:.68rem}.main-nav{padding:0 16px;overflow-x:auto;flex-wrap:nowrap}.nav-tab{padding:9px 22px;font-size:.9rem;white-space:nowrap}.page-grid{grid-template-columns:1fr;padding:16px;gap:14px}.hero,.status-panel,.full{grid-column:1/-1}.status-panel,.row{grid-template-columns:1fr}.hero-title{font-size:2rem}.card-title{padding:14px 14px 0}.card-body{padding:14px}.row.header{display:none}}
+  </style>
+</head>
+<body>
+  <div class="top-bar"><div>WC API CONTRACT</div><div>ALCANCE 20</div></div>
+  <nav class="main-nav"><a href="#" class="nav-tab">INICIO</a><a href="partidos-filtros.html" class="nav-tab">PARTIDOS</a><a href="equipo-detalle.html" class="nav-tab">EQUIPOS</a><a href="ods-estrategia.html" class="nav-tab">ODS</a><a href="consistencia-datos.html" class="nav-tab active">DATOS</a></nav>
+  <main class="page-grid">
+    <section class="card hero"><div class="hero-badge">CONSISTENCIA DE DATOS</div><h1 class="hero-title">MOCKUPS API-READY</h1><p class="hero-copy">Los datos falsos se organizan con las mismas entidades que consumirá el frontend: partidos, equipos, confederaciones, ranking, jugadores y tablas de clasificación.</p></section>
+    <section class="status-panel"><div class="status-box"><strong>6</strong><span>Categorías API</span></div><div class="status-box"><strong>DOCS</strong><span>Índice disponible</span></div><div class="status-box"><strong>HTML</strong><span>Primera entrega</span></div><div class="status-box"><strong>OK</strong><span>Campos trazables</span></div></section>
+    <section class="card full"><div class="card-title">MATRIZ DE CAMPOS</div><div class="card-body matrix">
+      <div class="row header"><div>Entidad</div><div>Campos en mockup</div><div>Forma esperada API</div><div>Estado</div></div>
+      <div class="row"><div><span class="tag">matches</span></div><div>id, homeTeam, awayTeam, date, time, city, stadium, round, group, status, score</div><div class="sample">{ id, homeTeam:{id,name,code}, awayTeam:{...}, venue:{city,stadium}, round, group, status }</div><div class="ok">Alineado</div></div>
+      <div class="row"><div><span class="tag">countries</span></div><div>id, name, code, flag, confederation, coach, group, fifaRanking, appearances</div><div class="sample">{ id, name, code, flagUrl, confederationId, coach, group, ranking, worldCupAppearances }</div><div class="ok">Alineado</div></div>
+      <div class="row"><div><span class="tag">players</span></div><div>id, name, number, position, starter, avatar</div><div class="sample">{ id, teamId, name, shirtNumber, position, isStarter }</div><div class="ok">Alineado</div></div>
+      <div class="row"><div><span class="tag">standings</span></div><div>group, team, played, won, drawn, lost, goalsFor, goalsAgainst, points</div><div class="sample">{ group, rows:[{ teamId, played, wins, draws, losses, gf, ga, pts }] }</div><div class="ok">Alineado</div></div>
+      <div class="row"><div><span class="tag">ranking</span></div><div>team, confederation, rank, points, previousRank</div><div class="sample">{ countryId, rank, points, confederationCode }</div><div class="ok">Alineado</div></div>
+      <div class="row"><div><span class="tag">leagues</span></div><div>round, phase, group, bracketOrder</div><div class="sample">{ id, name, phase, order }</div><div class="warn">Usado para rondas</div></div>
+    </div></section>
+    <section class="card full"><div class="card-title">CRITERIO DE REVISIÓN</div><div class="card-body"><p>La raíz de la API carga una documentación con categorías para countries, leagues, matches, standings, news y ranking. Para esta primera entrega, los mockups usan esas entidades como contrato visual y evitan campos sueltos: equipos, sedes, jugadores y tablas se modelan como objetos o listas que podrán mapearse en la integración final.</p></div></section>
+  </main>
+</body>
+</html>
