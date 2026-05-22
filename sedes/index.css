@@ -81,7 +81,6 @@ body {
     width: 100%;
 }
 
-/* Barra de Filtros */
 .filter-bar {
     display: flex;
     gap: 15px;
@@ -94,7 +93,7 @@ body {
     color: var(--text-muted);
     border: 1px solid var(--card-border);
     padding: 6px 20px;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
     font-family: inherit;
     font-weight: 600;
@@ -117,7 +116,7 @@ body {
 .city-banner {
     position: relative;
     height: 250px;
-    border-radius: 12px;
+    border-radius: 4px;
 
     background: linear-gradient(to right, rgba(20, 20, 40, 0.8), rgba(255, 0, 100, 0.4)), url('https://images.unsplash.com/photo-1549877452-9c387954fbc2?q=80&w=1200') center/cover;
     display: flex;
@@ -138,7 +137,7 @@ body {
 .detail-card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 10px;
+    border-radius: 4px;
     padding: 25px 30px;
     text-transform: none;
 }
